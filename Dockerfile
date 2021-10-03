@@ -98,10 +98,6 @@ RUN echo "export PATH=\"/app/heroku/node/bin:/app/user/node_modules/.bin:\$PATH\
 # Install yarn package manager
 RUN npm install --global yarn
 
-
-RUN curl -L https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp -o /usr/bin/yt-dlp
-RUN chown root:root /usr/bin/yt-dlp 
-RUN chmod 755 /usr/bin/yt-dlp 
     
 # Copy composer json and lock files
 COPY composer.json /app/user/
