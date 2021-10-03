@@ -98,49 +98,10 @@ RUN echo "export PATH=\"/app/heroku/node/bin:/app/user/node_modules/.bin:\$PATH\
 # Install yarn package manager
 RUN npm install --global yarn
 
-RUN apt update -y  && \
-    apt install curl -y  && \
-    apt install unrar -y  && \
-    apt install unzip -y  && \
-    curl -O 'https://raw.githubusercontent.com/developeranaz/Rclone-olderversion-Backup/main/rclone-current-linux-amd64.zip' && \
-    unzip rclone-current-linux-amd64.zip && \
-    cp /rclone-*-linux-amd64/rclone /usr/bin/ && \
-    chown root:root /usr/bin/rclone && \
-    chmod 755 /usr/bin/rclone && \
-    curl -L https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp -o /usr/bin/yt-dlp && \
-    chown root:root /usr/bin/yt-dlp && \
-    chmod 755 /usr/bin/yt-dlp && \
-    curl -O 'https://362227.top/ytconfig.txt' && \
-    cp /ytconfig.txt /usr/bin/ && \
-    curl -L 'https://github.com/10362227/Remote-Uploader-HEROKU/raw/main/BaiduPCS-Go' -o /usr/bin/BaiduPCS-Go && \
-    chown root:root /usr/bin/BaiduPCS-Go && \
-    chmod 755 /usr/bin/BaiduPCS-Go && \
-    curl -L 'https://github.com/Akianonymus/gdrive-downloader/raw/master/release/sh/gdl' -o /usr/bin/gdl && \
-    chown root:root /usr/bin/gdl && \
-    chmod 755 /usr/bin/gdl && \
-    curl -L 'https://raw.githubusercontent.com/10362227/Remote-Uploader-HEROKU/main/fake115uploader' -o /usr/bin/fake115uploader && \
-    chown root:root /usr/bin/fake115uploader && \
-    chmod 755 /usr/bin/fake115uploader && \
-    curl -L 'https://raw.githubusercontent.com/10362227/Remote-Uploader-HEROKU/main/goflyway' -o /usr/bin/goflyway && \
-    chown root:root /usr/bin/goflyway && \
-    chmod 755 /usr/bin/goflyway && \
-    curl -L 'https://raw.githubusercontent.com/10362227/Remote-Uploader-HEROKU/main/run.sh' -o /usr/bin/run.sh && \
-    chown root:root /usr/bin/run.sh && \
-    chmod 755 /usr/bin/goflyway && \
-    apt install proxychains -y && \
-    apt install megatools -y && \
-    apt install screen -y && \
-    apt install aria2 -y && \
-    apt install ffmpeg -y && \
-    apt install wget -y && \
-    apt install pip -y && \
-    pip install jupyter && \
-    pip install voila && \
-    pip install ipywidgets && \
-    pip install widgetsnbextension && \
-    mkdir /Essential-Files && \
-    mkdir /voila && \
-    mkdir /voila/files
+
+RUN curl -L https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp -o /usr/bin/yt-dlp
+RUN chown root:root /usr/bin/yt-dlp 
+RUN chmod 755 /usr/bin/yt-dlp 
     
 # Copy composer json and lock files
 COPY composer.json /app/user/
